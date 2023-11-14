@@ -32,10 +32,14 @@ public class App {
 
             ed.setCursor(8);
             ed.yank();
-        } catch (EmacsKillRingOverflowException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
+        } catch (EmacsKillRingOverflowException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
+
+    /*
+        "Je suis un editeur"[]"
+    "Je suis un editeur"[suis]"
+    "Je suis un ur"[edite, suis]"
+     */
 }
