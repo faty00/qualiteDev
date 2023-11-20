@@ -20,6 +20,27 @@ public class TextBufferTest {
         Assertions.assertEquals(expectedText, txt);
         System.out.println(tb.toString());
 
+        System.out.println(tb.maxP());
+        tb.ins("cours ", 0 );
+        System.out.println(tb.toString());
+        System.out.println(tb.maxP());
+
+        tb.del(0, 6);
+        System.out.println(tb.toString());
+        tb.del(0, 30);
+
+        tb.ins("cours de java ", 0 );
+
+        TextBuffer tbs = new TextBuffer("cours qualite logiciel");;
+        String expectedTxt = "cours qualite logiciel";
+
+        String text = tbs.substr(0,30);
+        Assertions.assertEquals(expectedTxt, text);
+
+
+        System.out.println(tb.toString());
+
+
     }
 
 
