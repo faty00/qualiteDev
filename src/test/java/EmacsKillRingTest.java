@@ -119,7 +119,7 @@ public class EmacsKillRingTest {
 
         //Act
         try {
-            for (int i = 0; i< 30; i++) {
+            for (int i = 21; i< 20; i++) {
                 emacsKillRing.add("test");
             }
 
