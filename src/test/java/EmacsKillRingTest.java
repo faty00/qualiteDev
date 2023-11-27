@@ -11,6 +11,12 @@ public class EmacsKillRingTest {
 
     private TextBuffer textBuffer;
 
+    /*
+    *Vérifie si une exception EmacsKillRingOverflowException est levée lorsque
+    * le buffer est plein. Le test remplit le buffer avec le nombre maximum
+    * d'éléments autorisés (EmacsKillRing.MAX) et essaie d'ajouter un élément
+    * supplémentaire pour vérifier que l'exception est bien déclenchée.
+     */
     @Test
     public void should_throw_emacskillringoverflowexception_when_buffer_full(){
 
@@ -35,6 +41,10 @@ public class EmacsKillRingTest {
 
     }
 
+    /*Vérifie si la méthode isEmpty() fonctionne correctement en vérifiant si un EmacsKillRing
+    *nouvellement créé est vide et si un autre objet EmacsKillRing avec un élément ajouté
+    * n'est pas vide.
+     */
     @Test
     public void test_empty(){
 
@@ -64,6 +74,10 @@ public class EmacsKillRingTest {
 
     }
 
+    /*
+    Teste la méthode rotateFwd() pour s'assurer qu'elle ne provoque pas d'erreur
+    lorsqu'elle est appelée après avoir ajouté des éléments dans le EmacsKillRing.
+     */
     @Test
     public void test_rotatefwd(){
 
@@ -87,6 +101,10 @@ public class EmacsKillRingTest {
 
     }
 
+    /*
+    * test_current: Vérifie si la méthode currentElt() retourne correctement
+    * le dernier élément ajouté dans le EmacsKillRing
+    * */
     @Test
     public void test_current(){
 
@@ -109,28 +127,29 @@ public class EmacsKillRingTest {
         assertThat(emacsKillRing.currentElt(), is("test"));
 
     }
-
+    /*/**
+     * Teste le comportement de la classe EmacsKillRing lorsqu'un dépassement de la limite maximale
+     * du nombre d'éléments est tenté.
+     * Vérifie que la classe gère correctement cette situation en ne déclenchant pas l'exception
+     * EmacsKillRingOverflowException et en permettant l'exécution de la méthode rotateFwd() après
+     * avoir atteint la limite.
+     */
     @Test
-    public void test_entry(){
-
-        //Arrange
+    public void test_entry() {
+        // Arrange
         EmacsKillRing emacsKillRing = new EmacsKillRing();
 
-
-        //Act
+        // Act
         try {
-            for (int i = 21; i< 20; i++) {
+            for (int i = 0; i < EmacsKillRing.MAX + 1; i++) {
                 emacsKillRing.add("test");
             }
-
-        }
-        catch(EmacsKillRingOverflowException e){
-            Assertions.fail();
+        } catch (EmacsKillRingOverflowException e) {
+            Assertions.fail("Unexpected EmacsKillRingOverflowException");
         }
 
-        //Assert
+        // Assert
         emacsKillRing.rotateFwd();
-
     }
 
 }
