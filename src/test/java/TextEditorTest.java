@@ -1,36 +1,39 @@
 import fr.einfolearning.tp2.metiers.EmacsKillRing;
 import fr.einfolearning.tp2.metiers.TextBuffer;
 
+import fr.einfolearning.tp2.metiers.TextEditor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.doThrow;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
-public class TextEditorTest {
+import fr.einfolearning.tp2.metiers.EmacsKillRing;
+import fr.einfolearning.tp2.metiers.TextBuffer;
+import fr.einfolearning.tp2.metiers.TextEditor;
+import fr.einfolearning.tp2.metiers.exceptions.EmacsKillRingOverflowException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-    TextBuffer mockBuffer;
-    EmacsKillRing mockEmacs;
-    Boolean yankMod;
-    @BeforeEach
-    public void init(){
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
+@ExtendWith(MockitoExtension.class)
 
-        TextBuffer mockBuffer = mock(TextBuffer.class);
-        EmacsKillRing mockEmacs = mock(EmacsKillRing.class);
+    public class TextEditorTest {
 
-    }
 
-    @Test
-    public void testYankPop(){
-
-        mockBuffer = mock(TextBuffer.class);
-        mockEmacs = mock(EmacsKillRing.class);
-
-        when(mockEmacs.isEmpty()).thenReturn(false);
-        doThrow(new IllegalAccessException("Yankpop without yank not allowed")).when(!yankMod);
-    }
 }

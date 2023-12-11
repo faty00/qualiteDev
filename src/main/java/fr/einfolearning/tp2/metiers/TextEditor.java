@@ -10,6 +10,7 @@ import java.lang.IllegalAccessException;
  */
 public class TextEditor {
 
+
     private TextBuffer buffer;     // text buffer
     private EmacsKillRing emacsKillring; // killring
     private int cursor, mark;   // cursor and mark position
@@ -24,6 +25,16 @@ public class TextEditor {
         emacsKillring = new EmacsKillRing();
         cursor = 0;
         mark = -1; // must be changed before manipulation
+        yankMode = false;
+        yankLeft = -1;
+        yankRight = -1;
+    }
+
+    public TextEditor(TextBuffer buffer, EmacsKillRing emacsKillring) {
+        this.buffer = buffer;
+        this.emacsKillring = emacsKillring;
+        cursor = 0;
+        mark = -1;
         yankMode = false;
         yankLeft = -1;
         yankRight = -1;
